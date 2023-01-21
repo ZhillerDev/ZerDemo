@@ -1,0 +1,9 @@
+port: ":10001"
+mainurl: "http://localhost:10001"
+static-mainurl: "http://localhost:10001/static"
+
+image-save-path: "./runtime/uploads/images"
+image-max-size: 5
+image-allow-extentions: [ ".jpg",".png",".jpeg",".gif" ]
+
+logs-path: "./runtime/logs/logger.json"

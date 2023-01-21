@@ -1,0 +1,11 @@
+package constants
+
+const (
+	SUCCESS  = 200
+	REDIRECT = 300
+	FAILED   = 400
+	ERROR    = 500
+
+	ERROR_UPLOAD_SAVE_IMAGE = 1001
+	ERROR_UPLOAD_TYPE_IMAGE = 1002
+)
