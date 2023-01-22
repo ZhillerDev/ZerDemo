@@ -4,7 +4,7 @@ import { ElMessage } from "element-plus";
 import { STATUS } from "./status";
 
 const server = axios.create({
-  baseURL: "localhost:10001",
+  baseURL: "http://localhost:10001",
   timeout: 300 * 1000,
 });
 
@@ -23,7 +23,7 @@ server.interceptors.request.use(
     // 获取用户token并附带在headers里传递给后端
     const token = localStorage.token;
     if (token) {
-      config.headers["auth"] = token;
+      config.headers["token"] = token;
     }
     return config;
   },

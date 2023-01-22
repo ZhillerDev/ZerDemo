@@ -18,8 +18,12 @@ const http = {
     const config = {
       method: "post",
       url: url,
+      headers:{
+        'Content-type': 'application/x-www-form-urlencoded'
+      },
     };
     if (formdata) config.data = formdata;
+    console.log(config)
     return intcp(config);
   },
 };

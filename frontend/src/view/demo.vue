@@ -43,18 +43,15 @@ console.log(compNames)
   .d-right {
     width: 94%;
     height: 100vh;
-    background-color: lightskyblue;
 
     .dr-scroll{
       margin: 10px;
       width: 97%;
-      background-color: antiquewhite;
       display: inline-block;
       column-count: 2;
       .dr-card {
         break-inside: avoid;
         width: 100%;
-        background-color: lightgray;
         margin: 20px;
       }
     }

@@ -7,3 +7,9 @@ image-max-size: 5
 image-allow-extentions: [ ".jpg",".png",".jpeg",".gif" ]
 
 logs-path: "./runtime/logs/logger.json"
+
+mysql:
+  username: "root"
+  password: 123456
+  database: "golang"
+

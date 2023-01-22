@@ -4,35 +4,34 @@ import (
 	"ginmod/config"
 	"ginmod/config/logger"
 	"ginmod/src/middleware"
+	"ginmod/src/preinit"
 	r "ginmod/src/router"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
-func PreInit(engine *gin.Engine) {
-	engine.Static("/static", "./runtime")
-}
-
 func main() {
 	router := gin.Default()
 
-	// 预初始化：路由自身的一些简单性质
-	PreInit(router)
+	// 1. 初始化服务器配置
+	preinit.ServerInit(router)
+	preinit.DatabaseInit()
 
-	// 加载配置文件
+	// 2. 加载配置文件
 	config.ConfigurationInit()
-
-	// 加载日志
+	// 3. 加载日志
 	logger.LoggerInit()
 	logger.Logger.Info("server running")
 
-	// 设置跨域
+	// 4. 设置跨域
 	router.Use(middleware.CORSSetting())
+	// 5. 初始化所有中间件
+	router.Use(middleware.Init())
 
-	// 主副路由先后加载
+	// 6. 主副路由先后加载
 	r.MainRouterInit(router)
 	r.TestRouterInit(router)
 
-	// 运行端口
+	// 7. 运行端口
 	router.Run(viper.GetString("port"))
 }
