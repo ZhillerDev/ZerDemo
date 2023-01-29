@@ -1,35 +1,70 @@
 import {createRouter, createWebHistory} from "vue-router";
 import {routerSettings} from "../constants/router-settings.js";
-import {fastMessage} from "../constants/message.js";
 import apiLogin from "../api/api-login.js";
 
 
 const routes = [
+    // 根节点
     {
         path: "/",
         component: () => import("../view/main.vue"),
     },
+
+    // 登录路由
     {
         path: "/login",
         name: "login",
         component: () => import("../view/login.vue"),
     },
+
+    // css小玩意
     {
-        path: "/demo",
-        component: () => import('../view/demo.vue')
+        path: "/css",
+        children: [
+            {
+                path: "demo",
+                component: () => import('../view/csstyle/demo.vue')
+            },
+            {
+                path: "cards",
+                component:()=>import('../view/csstyle/css-cards.vue')
+            }
+        ]
     },
+
+    // 文件上传
     {
         path: "/uploadpic",
         component: import('../view/uploadpic.vue')
     },
+
+    // 数据库查询路由
     {
-        path: "/pagequery",
-        component: () => import("../view/query/page-query.vue")
+        path: "/select",
+        children: [
+            {
+                path: "pagequery",
+                component: () => import("../view/query/page-query.vue"),
+            },
+            {
+                path: "userdataquery",
+                component: () => import("../view/query/userdata-query.vue")
+            },
+        ]
     },
+
+    // 数据修改
     {
-        path: "/userdataquery",
-        component: () => import("../view/query/userdata-query.vue")
+        path: "/modify",
+        children: [
+            {
+                path: "insertuser",
+                component: () => import("../view/modify/insert-user.vue")
+            }
+        ]
     },
+
+    // 中转页面
     {
         path: "/middle",
         children: [

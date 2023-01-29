@@ -14,8 +14,15 @@
 <script setup>
 import {useRouter} from "vue-router";
 import {House} from '@element-plus/icons-vue'
-import {computed, ref, reactive} from 'vue'
+import {computed, ref, reactive, onBeforeUnmount} from 'vue'
 import {ElNotification} from "element-plus";
+import 'animate.css';
+import {useDark, useToggle} from "@vueuse/core";
+import emitter from "./api/emitter.js";
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
 
 const router = useRouter()
 const currentPath = computed(() => {
@@ -33,6 +40,7 @@ const backToIndex = () => {
     duration: 1500
   })
 }
+
 </script>
 
 <style lang="less" scoped>

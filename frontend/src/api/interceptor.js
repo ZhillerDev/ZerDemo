@@ -3,9 +3,10 @@ import qs from "qs";
 import { ElMessage } from "element-plus";
 import { STATUS } from "./status";
 
+// 初始化后端服务器数据
 const server = axios.create({
   baseURL: "http://localhost:10001",
-  timeout: 300 * 1000,
+  timeout: 30 * 1000,
 });
 
 // 请求拦截器

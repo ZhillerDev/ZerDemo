@@ -26,8 +26,6 @@ apiQuery.userDataQuery("/sdb/allusers").then(res => {
   console.log(res[0], "fuck")
 })
 
-console.log(datas, "shit")
-
 
 </script>
 
